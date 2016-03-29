@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.IntSummaryStatistics;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.OptionalDouble;
 import java.util.concurrent.Callable;
 import java.util.function.BiFunction;
@@ -414,16 +415,16 @@ public class JunkTest
 		System.out.println("Lowest number in List : " + stats.getMin());
 		System.out.println("Sum of all numbers : " + stats.getSum());
 		System.out.println("Average of all numbers : " + stats.getAverage());
-		
+
 		System.err.println("toString: " + stats.toString()); // toString: IntSummaryStatistics{count=10, sum=55, min=1, average=5.500000, max=10}
 	}
-	
+
 	@Test
 	public void test15()
 	{
-		System.err.println("" + Date.from(Clock.systemDefaultZone().instant()).toString());	
+		System.err.println("" + Date.from(Clock.systemDefaultZone().instant()).toString());
 	}
-	
+
 	@Test
 	public void test16()
 	{
@@ -433,20 +434,42 @@ public class JunkTest
 		{
 			list.add(getPerson(i));
 		}
-		
+
 		int agetest = 19;
-		
+
 		list.stream()
-			.filter( p -> Gender.MALE == p.getGender() && p.getAge() > agetest)
+			.filter(p -> Gender.MALE == p.getGender() && p.getAge() > agetest)
 			.forEach(p -> System.err.println(p));
-		
+
 		System.err.println("----end of 16----");
 	}
-	
+
+	@Test
+	public void test17()
+	{
+		System.err.println("----17----");
+		Predicate<Person> nonNullPredicate = Objects::nonNull;
+		Predicate<Person> nameNotNull = p -> p.getAddress() != null;
+		Predicate<Person> addressPredicate = p -> p.getAddress().equals("1236 address");
+		Predicate<Person> fullPredicate = nonNullPredicate.and(nameNotNull).and(addressPredicate);
+
+		List<Person> list = new ArrayList();
+		for(int i = 0; i < 20; i++)
+		{
+			list.add(getPerson(i));
+		}
+
+		list.stream()
+			.filter(fullPredicate)
+			.forEach(p -> System.err.println(p));
+
+		System.err.println("----end of 17----");
+	}
+
 	Person getPerson(int i)
 	{
 		Gender g = (i % 2 == 0) ? Gender.FEMALE : Gender.MALE;
-		
+
 		return new Person.Builder()
 			.surName("aaa" + i + "aaa")
 			.givenName("bbb" + i + "bbb")
@@ -454,7 +477,7 @@ public class JunkTest
 			.age(i + 11)
 			.email("yoda@starwars" + i + ".space")
 			.gender(g)
-			.phoneNumber("666" + i +"6666")
+			.phoneNumber("666" + i + "6666")
 			.build();
 	}
 }

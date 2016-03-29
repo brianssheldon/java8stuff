@@ -151,7 +151,7 @@ public class Person {
 
   @Override
   public String toString(){
-    return "Name: " + givenName + " " + surName + "\n" + "Age: " + age + "  Gender: " + gender + "\n" + "eMail: " + eMail + "\n";
+    return "Name: " + givenName + " " + surName + "\n" + "Age: " + age + "  Gender: " + gender + "\n" + "eMail: " + eMail + "\n" + "Address: " +  address + "\n";
   } 
 
   public static List<Person> createShortList(){
