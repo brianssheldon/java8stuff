@@ -26,13 +26,7 @@ public class JunkTest
 	public int sumAll(List<Integer> numbers, Predicate<Integer> p)
 	{
 		int total = 0;
-		for(int number : numbers)
-		{
-			if(p.test(number))
-			{
-				total += number;
-			}
-		}
+		total = numbers.stream().filter((number) -> (p.test(number))).map((number) -> number).reduce(total, Integer::sum);
 		return total;
 	}
 
@@ -427,8 +421,32 @@ public class JunkTest
 	@Test
 	public void test15()
 	{
-		System.err.println("" + Date.from(Clock.systemDefaultZone().instant()).toString());
+		System.err.println("" + Date.from(Clock.systemDefaultZone().instant()).toString());	
+	}
+	
+	@Test
+	public void test16()
+	{
+		List list = new ArrayList();
+		for(int i = 0; i < 20; i++)
+		{
+			list.add(getPerson(i));
+		}
+		list.forEach( (p) -> System.err.println(p));
+	}
+	
+	Person getPerson(int i)
+	{
+		Gender g = (i % 2 == 0) ? Gender.FEMALE : Gender.MALE;
 		
-		
+		return new Person.Builder()
+			.surName("aaa" + i + "aaa")
+			.givenName("bbb" + i + "bbb")
+			.address("123" + i + " address")
+			.age(i + 11)
+			.email("yoda@starwars" + i + ".space")
+			.gender(g)
+			.phoneNumber("666" + i +"6666")
+			.build();
 	}
 }
