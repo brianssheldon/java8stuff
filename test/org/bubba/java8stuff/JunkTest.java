@@ -427,12 +427,20 @@ public class JunkTest
 	@Test
 	public void test16()
 	{
-		List list = new ArrayList();
+		System.err.println("----16----");
+		List<Person> list = new ArrayList();
 		for(int i = 0; i < 20; i++)
 		{
 			list.add(getPerson(i));
 		}
-		list.forEach( (p) -> System.err.println(p));
+		
+		int agetest = 19;
+		
+		list.stream()
+			.filter( p -> Gender.MALE == p.getGender() && p.getAge() > agetest)
+			.forEach(p -> System.err.println(p));
+		
+		System.err.println("----end of 16----");
 	}
 	
 	Person getPerson(int i)
