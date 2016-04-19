@@ -19,6 +19,11 @@
 	    <artifactId>junit</artifactId>
 	    <version>4.8.1</version>
 	</dependency>
+	<dependency>
+	    <groupId>org.apache.commons</groupId>
+	    <artifactId>commons-lang3</artifactId>
+	    <version>3.0.1</version>
+	</dependency>
     </dependencies>
 
     <build>
@@ -71,23 +76,23 @@
 		</executions>
 	    </plugin>
 	</plugins>
-	    <sourceDirectory>src/main/java</sourceDirectory>
-	    <testSourceDirectory>test</testSourceDirectory>
-	    <resources>
-		<resource>
-		    <directory>src/main/java</directory>
-		    <includes>
-			    <include>**/*</include>
-		    </includes>
-		    <excludes>
-			    <exclude>**/target/**</exclude>
-			    <exclude>**/*.java</exclude>
-		    </excludes>
-		</resource>
-	    </resources>
+	<sourceDirectory>src/main/java</sourceDirectory>
+	<testSourceDirectory>test</testSourceDirectory>
+	<resources>
+	    <resource>
+		<directory>src/main/java</directory>
+		<includes>
+		    <include>**/*</include>
+		</includes>
+		<excludes>
+		    <exclude>**/target/**</exclude>
+		    <exclude>**/*.java</exclude>
+		</excludes>
+	    </resource>
+	</resources>
     </build>
     <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+	<maven.compiler.source>1.8</maven.compiler.source>
+	<maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 </project>
