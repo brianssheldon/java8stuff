@@ -1,11 +1,12 @@
 package org.bubba.iec;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Collection;
 
-public class Order
+public class Order implements Serializable
 {
-	private OrderItem[] orderItems;
+	private final OrderItem[] orderItems;
 
 	public Order(OrderItem[] orderItems)
 	{
