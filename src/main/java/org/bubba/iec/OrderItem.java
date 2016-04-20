@@ -3,32 +3,27 @@ package org.bubba.iec;
 import java.io.Serializable;
 
 public class OrderItem implements Serializable
-{    
-    private boolean taxable;
-    private Type type;
-    private Item[] items;
+{
+	private Item item;
+	private int quantity;
 
-    public boolean isTaxable() {
-        return taxable;
-    }
+	public Item getItem()
+	{
+		return item;
+	}
 
-    public void setTaxable(boolean taxable) {
-        this.taxable = taxable;
-    }
+	public void setItem(Item item)
+	{
+		this.item = item;
+	}
 
-    public Type getType() {
-        return type;
-    }
+	public int getQuantity()
+	{
+		return quantity;
+	}
 
-    public void setType(Type type) {
-        this.type = type;
-    }
-
-    public Item[] getItems() {
-        return items;
-    }
-
-    public void setItems(Item[] items) {
-        this.items = items;
-    }
+	public void setQuantity(int quantity)
+	{
+		this.quantity = quantity;
+	}
 }

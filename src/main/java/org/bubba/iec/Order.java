@@ -19,14 +19,10 @@ public class Order implements Serializable{
         BigDecimal total = BigDecimal.ZERO.setScale(2, RoundingMode.UP);
 
         for (OrderItem orderItem : orderItems) {
-            for (Item item : orderItem.getItems()) {
                 total = total.add(
-                        item.getPrice().multiply(item.get )
-            }
-
+                        orderItem.getItem().getPrice().multiply(new BigDecimal(orderItem.getQuantity())).setScale(2, RoundingMode.UP));
         }
-
-        return 0; // implement this method
+        return total; // implement this method
     }
 
     /**
