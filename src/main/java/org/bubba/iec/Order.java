@@ -53,8 +53,7 @@ public class Order implements Serializable
 	 */
 	public Collection<Item> getItems()
 	{
-
-		List<Item> items = new ArrayList<Item>();
+		List<Item> items = new ArrayList<>();
 		for(OrderItem orderItem : orderItems)
 		{
 			items.add(orderItem.getItem());
@@ -67,6 +66,24 @@ public class Order implements Serializable
 				return o1.getName().compareToIgnoreCase(o2.getName());
 			}
 		});
+		return items; // implement this method
+	}
+	
+	/**
+	 * Returns a Collection of all items sorted by item name
+	 * (case-insensitive).
+	 * @return Collection
+	 */
+	public Collection<Item> getItemsLambda()
+	{
+		List<Item> items = new ArrayList<>();
+		for(OrderItem orderItem : orderItems)
+		{
+			items.add(orderItem.getItem());
+		}
+		
+		Collections.sort(items, (Item lh, Item rh) -> lh.getName().compareToIgnoreCase(rh.getName()));
+
 		return items; // implement this method
 	}
 }
