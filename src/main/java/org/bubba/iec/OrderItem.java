@@ -7,6 +7,12 @@ public class OrderItem implements Serializable
 	private Item item;
 	private int quantity;
 
+	public OrderItem(Item item, int quantity)
+	{
+		this.item = item;
+		this.quantity = quantity;
+	}
+	
 	public Item getItem()
 	{
 		return item;

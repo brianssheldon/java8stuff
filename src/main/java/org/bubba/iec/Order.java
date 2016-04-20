@@ -21,15 +21,29 @@ public class Order implements Serializable
 // Returns the total order cost after the tax has been applied
 	public BigDecimal getOrderTotal(BigDecimal taxRate)
 	{
-
 		BigDecimal total = BigDecimal.ZERO.setScale(2, RoundingMode.UP);
-
+		Item item;
+		BigDecimal tempAmount;
+		
 		for(OrderItem orderItem : orderItems)
 		{
-			total = total.add(
-				orderItem.getItem().getPrice().multiply(new BigDecimal(orderItem.getQuantity())).setScale(2, RoundingMode.UP));
+			item = orderItem.getItem();
+			
+			if(item.getType().equals(Type.MATERIAL))
+			{
+				tempAmount = item.getPrice().multiply(new BigDecimal(orderItem.getQuantity()));
+				total = total.add(tempAmount);
+				
+				tempAmount = tempAmount.multiply(taxRate).setScale(2, RoundingMode.UP);
+				
+				total = total.add(tempAmount);
+			}
+			else
+			{
+				total = total.add(item.getPrice().multiply(new BigDecimal(orderItem.getQuantity())));
+			}
 		}
-		return total; // implement this method
+		return total.setScale(2, RoundingMode.UP); // implement this method
 	}
 
 	/**
