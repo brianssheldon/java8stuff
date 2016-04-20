@@ -1,0 +1,7 @@
+I'm assuming the OrderItem table has a key to the orderNumber field in the Order table.
+
+select o.orderNumber 
+  from mydb.order o 
+    join orderItem oi on o.orderNumber = oi.orderNumber
+    join item i on oi.key = i.key
+  where i.name like '%JAZZY%';

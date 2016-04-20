@@ -1,0 +1,10 @@
+I'm assuming the OrderItem table has a key to the orderNumber field in the Order table.
+
+select o.orderNumber 
+  from mydb.order o 
+    where o.orderNumber =
+	(select oi.orderNumber
+           from orderNumber oi
+	    join item i on oi.key = i.key
+	    group by oi.orderNumber
+            having sum(i.price * oi.quantity) > 100);

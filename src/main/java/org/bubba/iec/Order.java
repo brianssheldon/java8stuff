@@ -11,6 +11,7 @@ import java.util.List;
 
 public class Order implements Serializable
 {
+	private long number;
 	private final OrderItem[] orderItems;
 
 	public Order(OrderItem[] orderItems)
@@ -85,5 +86,15 @@ public class Order implements Serializable
 		Collections.sort(items, (Item lh, Item rh) -> lh.getName().compareToIgnoreCase(rh.getName()));
 
 		return items; // implement this method
+	}
+
+	public long getNumber()
+	{
+		return number;
+	}
+
+	public void setNumber(long number)
+	{
+		this.number = number;
 	}
 }
