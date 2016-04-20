@@ -4,10 +4,10 @@ import static junit.framework.Assert.assertEquals;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
-public class Iec_1_2_3_Test 
+public class Iec_questions_1_2_3_Test 
 {
     @Test
-	public void testReverse()
+	public void testReverse_1()
 	{
 		char[] cc = {'a','b','c','d','e','f','g','h'};
 		int x = 0;
@@ -30,7 +30,7 @@ public class Iec_1_2_3_Test
 	}
 	
     @Test
-	public void testCountSubstrings()
+	public void testCountSubstrings_2()
 	{
 		String searchMe = "abcdabcdabcd";
 		assertEquals(0, count("",""));
@@ -52,7 +52,7 @@ public class Iec_1_2_3_Test
 	
 	int count(String searchMe, String searchForMe)
 	{
-//		 return StringUtils.countMatches(searchMe, searchForMe);  
+//	this is what I would really do -	 return StringUtils.countMatches(searchMe, searchForMe);  
 		
 		if(StringUtils.isBlank(searchMe) 
 			|| StringUtils.isEmpty(searchForMe)
@@ -71,7 +71,7 @@ public class Iec_1_2_3_Test
 	}
 	
     @Test
-	public void testCountSubstringsRecursion()
+	public void testCountSubstringsRecursion_3()
 	{
 		String searchMe = "abcdabcdabcd";
 		assertEquals(0, countRecursion("",""));
@@ -95,7 +95,6 @@ public class Iec_1_2_3_Test
 	
 	int countRecursion(String searchMe, String searchForMe)
 	{
-//		 return StringUtils.countMatches(searchMe, searchForMe);  
 		kount = 0;
 		
 		if(StringUtils.isBlank(searchMe) 
@@ -116,17 +115,4 @@ public class Iec_1_2_3_Test
 			repeat(searchMe, searchForMe);
 		kount++;
 	}
-
 }
-
-/* ***********************************************************
- *                                                           *
- * Copyright (C) 2015 The Hertz Corporation                  *
- * All Rights Reserved. (Unpublished.)                       *
- * The information contained herein is confidential and      *
- * proprietary to The Hertz Corporation and may not be       *
- * duplicated, disclosed to third parties, or used for any   *
- * purpose not expressly authorized by it.  Any unauthorized *
- * use, duplication or disclosure is prohibited by law.      *
- *                                                           *
- ************************************************************/

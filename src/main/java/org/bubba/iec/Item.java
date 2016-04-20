@@ -37,4 +37,15 @@ public class Item implements Serializable
 	{
 		return type;
 	}
+	
+	public int hasCode()
+	{
+		return this.toString().hashCode();
+	}
+	
+	public boolean equals(Object o)
+	{
+		if(o == null || !(o instanceof Item)) return false;
+		return this.key == ((Item)o).getKey();
+	}
 }
